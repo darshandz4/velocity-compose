@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: yourpassword
+      MYSQL_DATABASE: yourdatabase
+      MYSQL_USER: youruser
+      MYSQL_PASSWORD: yourpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+  
+  
+In this example, we're using version 3.9 of Docker Compose. We're creating a service called db, which uses the mysql:8.0 Docker image.
+We're also setting some environment variables, including the root password, database name, user, and password.
+
+We're mapping port 3306 on the container to port 3306 on the host machine, so that you can access the MySQL server from outside the Docker container. 
+We're also creating a volume named data, which maps to the /var/lib/mysql directory inside the container.
+This volume will persist data even if the container is removed.
+
+You can save this file as docker-compose.yml in a directory, and then run the command docker-compose up to start the MySQL server.  
